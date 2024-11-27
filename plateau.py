@@ -16,3 +16,4 @@ class Plateau : #création du plateau
 if __name__ == '__main__':
     plateau1=Plateau()
     
+    
