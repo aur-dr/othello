@@ -77,8 +77,11 @@ class Engine :
             
 
     def initialisation_joueur(self):
+        nom_joueur1 = input("Entrez votre nom: ")
+        nom_joueur2 = input("Entrez votre nom: ")
         joueur_1 = Joueur(nom_joueur=nom_joueur1,a_joué_au_dernier_tour=True,joueur_actif=True,couleur="X")
         joueur_2 = Joueur(nom_joueur=nom_joueur2,a_joué_au_dernier_tour=True,joueur_actif=False,couleur="O")
+    
 if __name__ == '__main__':
     engine1= Engine()
     #print(list_pion)
