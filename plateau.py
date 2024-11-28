@@ -1,16 +1,23 @@
 
 class Plateau : #création du plateau
+
+
     l1 = [0, 0, 0, 0, 0, 0, 0, 0]
     l2 = [0, 0, 0, 0, 0, 0, 0, 0]
     l3 = [0, 0, 0, 0, 0, 0, 0, 0]
-    l4 = [0, 0, 0, 0, 0, 0, 0, 0]
-    l5 = [0, 0, 0, 0, 0, 0, 0, 0]
+    l4 = [0, 0, 0, 1, 2, 0, 0, 0]
+    l5 = [0, 0, 0, 2, 1, 0, 0, 0]
     l6 = [0, 0, 0, 0, 0, 0, 0, 0]
     l7 = [0, 0, 0, 0, 0, 0, 0, 0]
     l8 = [0, 0, 0, 0, 0, 0, 0, 0]
 
     # Création de la grille
     grille = [l1, l2, l3, l4, l5, l6, l7, l8]
+
+    
+    def __init__(self, grille) : 
+        self.grille = grille
+        
 
     def update_plateau(grille):
         col_width = max(len(str(word)) for row in grille for word in row) + 2  # Calcul de la largeur des colonnes
@@ -31,5 +38,3 @@ class Plateau : #création du plateau
     update_plateau(grille)
         
 
-    def __init__(self, grille) : 
-        self.grille = grille
