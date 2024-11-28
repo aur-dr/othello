@@ -9,4 +9,8 @@
 
 from engine import Engine
 
-engine1 = Engine()
+
+if __name__ == '__main__':
+    engine1 = Engine()
+    engine1.plateau1.update_plateau()
+    engine1.trouver_pion_a_retourner(plateau=engine1.plateau1,input_joueur=(4,6),Joueur_actif=engine1.joueur1)

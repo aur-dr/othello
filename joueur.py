@@ -1,6 +1,6 @@
 class Joueur:
 
-    def __init__(self,num_joueur: int, joueur_actif: bool, couleur: int):
+    def __init__(self, num_joueur: int, joueur_actif: bool, couleur: int):
 
         self.nom_joueur = input("Quel est le nom du joueur ? ")
         self.num_joueur = num_joueur
