@@ -1,5 +1,8 @@
 from pion import Pion
 
+
+
+
 class Plateau : #création du plateau
 
     def __init__(self, list_pion : list, structure_globale_du_tableau : str) :
