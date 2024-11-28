@@ -2,6 +2,7 @@
 
 from pion import Pion
 from plateau import Plateau
+from joueur import Joueur
 class Engine : 
     def __init__(self) :
        list_pion=[]
@@ -75,6 +76,9 @@ class Engine :
 
             
 
+    def initialisation_joueur(self):
+        joueur_1 = Joueur(nom_joueur=nom_joueur1,a_joué_au_dernier_tour=True,joueur_actif=True,couleur="X")
+        joueur_2 = Joueur(nom_joueur=nom_joueur2,a_joué_au_dernier_tour=True,joueur_actif=False,couleur="O")
 if __name__ == '__main__':
     engine1= Engine()
     #print(list_pion)
