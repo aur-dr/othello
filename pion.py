@@ -7,6 +7,10 @@ class Pion:
         self.position = position
     def __str__(self):
         return f"{self.couleur}, {self.coordonnes}, {self.position} "
+
+
+
+
 if __name__ == "__main__":
     pion1=Pion(couleur= "X",coordonnes=(1,1), position=("A1"))
     print(pion1)
