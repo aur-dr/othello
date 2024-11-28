@@ -31,5 +31,5 @@ class Plateau : #création du plateau
     update_plateau(grille)
         
 
-   def __init__(self, grille) : 
+    def __init__(self, grille) : 
         self.grille = grille
