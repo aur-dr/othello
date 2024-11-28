@@ -10,10 +10,10 @@ class Engine :
         self.joueur1= Joueur(1, True, 1)
         self.joueur2= Joueur(2, False, 2)
             
-   
+
     def trouver_pion_a_retourner(self, grille: list, input_joueur: tuple, Joueur_actif):
-        # output : list_de_pion_a_retourner 
-        couleur_du_joueur = Joueur_actif.couleur
+        # Output: list_de_pion_a_retourner 
+        couleur_a_chercher = Joueur_actif.couleur
         adversaire = 1 if couleur_a_chercher == 2 else 2
         list_de_pion_a_retourner = []
 
@@ -30,7 +30,7 @@ class Engine :
                     return []
                 elif grille[ligne][col] == adversaire:
                     positions_adversaire.append((ligne, col))
-                elif grille[ligne][col] == couleur_du_joueur:
+                elif grille[ligne][col] == couleur_a_chercher:
                     if positions_adversaire:
                         return positions_adversaire
                     else:
@@ -43,12 +43,13 @@ class Engine :
                       (-1, -1), (-1, 1), (1, -1), (1, 1)]  # diagonales
 
         ligne, col = input_joueur
-        if grille[ligne][col] == 0:
+        if grille[ligne][col] == 0:  # Position vide pour le nouveau pion
             for direction in directions:
                 pions_a_retourner = parcours_direction(ligne, col, direction)
                 list_de_pion_a_retourner.extend(pions_a_retourner)
 
         return list_de_pion_a_retourner
+
 
        
 
