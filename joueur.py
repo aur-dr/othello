@@ -53,7 +53,7 @@ class Joueur:
                 liste_position.append(lettres[x-1] + str(y))
 
         while input_ok!=True:
-            self.input_joueur_MAJU=input(f'{self.nom_joueur} place ton pion: ')
+            self.input_joueur_MAJU=input(f'{self.nom_joueur} place ton pion {self.couleur}: ')
             self.input_joueur_MAJU=self.input_joueur_MAJU.upper()
             if self.input_joueur_MAJU == "Q":
                 exit()
