@@ -11,8 +11,8 @@ class Engine :
         self.joueur2= Joueur(2, False, 2)
 
             
-
-    def trouver_pion_a_retourner(self, plateau: list, input_joueur: tuple, joueur_actif:Joueur):
+    
+    def trouver_pion_a_retourner(self, plateau: list, input_joueur: tuple, joueur_actif:Joueur): #Règle 
         # Output: list_de_pion_a_retourner 
         couleur_a_chercher = joueur_actif.couleur
         adversaire = 1 if couleur_a_chercher == 2 else 2

@@ -7,6 +7,7 @@ class Joueur:
         self.a_joue_au_dernier_tour = True
         self.actif = actif
         self.couleur = couleur
+        self.input_joueur_MAJU = ""
 
     def input_joueur (self) :
         input_ok=False
@@ -17,18 +18,18 @@ class Joueur:
                 liste_position = [lettres[x-1] + str(y)]
                 
         while input_ok!=True:
-            input_joueur=input(f'{self.nom_joueur} place ton pion: ')
-            input_joueur_MAJU=input_joueur.upper()
-            if input_joueur_MAJU == "Q":
+            self.input_joueur_MAJU=input(f'{self.nom_joueur} place ton pion: ')
+            self.input_joueur_MAJU=self.input_joueur_MAJU.upper()
+            if self.input_joueur_MAJU == "Q":
                 exit()
             else:
-                if len(input_joueur_MAJU)==2:
-                    if input_joueur_MAJU in liste_position:
+                if len(self.input_joueur_MAJU)==2:
+                    if self.input_joueur_MAJU in liste_position:
                         input_ok=True
                     else:
-                        print('Tu es en dehors de la grille, recommence: ')
+                        print('Tu es en dehors de la grille, recommence : ')
                 else:
-                    print("mauvaise entrer, tu n'as le droit qu'a 2 caracteres, recommence: ")
-        return input_joueur_MAJU
-    
-    
+                    print("Mauvaise entrée, tu n'as le droit qu'à 2 caractères, recommence : ")
+        #return input_joueur_MAJU
+
+        
