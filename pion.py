@@ -41,4 +41,3 @@ if __name__ == "__main__":
     for pion in list_pion:
         print(pion.couleur,pion.coordonnes,pion.position)
     
-    
