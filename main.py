@@ -13,4 +13,5 @@ from engine import Engine
 if __name__ == '__main__':
     engine1 = Engine()
     engine1.plateau1.update_plateau()
-    engine1.trouver_pion_a_retourner(plateau=engine1.plateau1.grillef,input_joueur=(4,6),Joueur_actif=engine1.joueur1)
+    engine1.trouver_pion_a_retourner(plateau=engine1.plateau1.grille,input_joueur=(1,1),joueur_actif=engine1.joueur1)
+    engine1.lister_coup_possible(plateau=engine1.plateau1.grille,joueur_actif=engine1.joueur1)

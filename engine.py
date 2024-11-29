@@ -12,14 +12,14 @@ class Engine :
 
             
 
-    def trouver_pion_a_retourner(self, plateau: list, input_joueur: tuple, Joueur_actif):
+    def trouver_pion_a_retourner(self, plateau: list, input_joueur: tuple, joueur_actif:Joueur):
         # Output: list_de_pion_a_retourner 
-        couleur_a_chercher = Joueur_actif.couleur
+        couleur_a_chercher = joueur_actif.couleur
         adversaire = 1 if couleur_a_chercher == 2 else 2
         list_de_pion_a_retourner = []
 
         def dans_grille(ligne, col):
-            return 0 <= ligne < len(plateau) and 0 <= col < len(plateau[0])
+            return 0 <= col < len(plateau) and 0 <= ligne < len(plateau[0])
 
         def parcours_direction(ligne, col, direction):
             dx, dy = direction
@@ -52,7 +52,37 @@ class Engine :
         return list_de_pion_a_retourner
 
 
-       
+    def lister_coup_possible (self, plateau: list, joueur_actif:Joueur) :
+        list_coup_possible=[]
+        for x in range(0,8):
+            for y in range (0,8):
+                pion_test=(x,y)
+                if self.trouver_pion_a_retourner(plateau=plateau,input_joueur=pion_test,joueur_actif=joueur_actif) :
+                    list_coup_possible.append(pion_test)
+        print(list_coup_possible)
+        return list_coup_possible
+    
+    def verif_coup_joueur (self,input_joueur:tuple,list_coup_possible:list):
+        if input_joueur in list_coup_possible:
+            return True
+        else:
+            return False
+    
+    def placer_pion (self, plateau: list, input_joueur: tuple, joueur_actif:Joueur) : 
+        plateau[input_joueur[0]][input_joueur[1]]=joueur_actif.couleur
+
+
+    def retourner_pion(self, plateau: list, list_de_pion_a_retourner: list, joueur_actif:Joueur) :
+        for pion in list_de_pion_a_retourner:
+            self.placer_pion(plateau=plateau,input_joueur=pion,joueur_actif=joueur_actif)
+    
+    def switch_joueur(self,joueur1:Joueur,joueur2:Joueur) : 
+        if joueur1.actif== True:
+            joueur1.actif=False
+            joueur2.actif=True
+        else:
+            joueur1.actif=True
+            joueur2.actif=False
 
 if __name__ == '__main__':
     engine1= Engine()
@@ -60,12 +90,4 @@ if __name__ == '__main__':
     #for pion in list_pion:
         #print(pion.couleur,pion.coordonnes,pion.position)
     engine1.initialisation_plateau_1_er_tour()
-
-
-
-    
-    
-
-
-
 
