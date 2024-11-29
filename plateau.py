@@ -19,7 +19,7 @@ class Plateau : #création du plateau
         self.grille = grille
 
 
-    def update_plateau(self):
+    def update_plateau(self, grille):
         col_width = max(len(str(word)) for row in grille for word in row) + 2  # Calcul de la largeur des colonnes
         separator = '+' + '+'.join('-' * col_width for _ in range(len(grille[0]) + 1)) + '+'
 
@@ -28,14 +28,19 @@ class Plateau : #création du plateau
         print(separator)
         print('|' + '|'.join(str(word).ljust(col_width) for word in header) + '|')
         print(separator)
-        
+
+        # Créer un dictionnaire de mappage
+        mapping = {1: 'X', 2: 'O', 0: ' '}  # Remplacez 1 par 'X', 2 par 'O', et 0 par ' ' (espace)
+
         # Imprimer les lignes avec séparateurs
         for i, row in enumerate(grille, start=1):
+            # Remplacer les valeurs dans la rangée
+            row = [mapping.get(word, word) for word in row]
             row = [i] + row  # Ajouter les numéros de ligne
             print('|' + '|'.join(str(word).ljust(col_width) for word in row) + '|')
             print(separator)  # Imprimer le séparateur après chaque ligne
-
-    update_plateau(grille)
+        
+    #update_plateau(grille)
         
     def gagnant(self,grille):
         scour_joueur_1 = 0

@@ -12,7 +12,7 @@ from engine import Engine
 
 if __name__ == '__main__':
     engine1 = Engine() #creation de l'engine
-    engine1.plateau1.update_plateau() #affichage du plateau et des joueur
+    engine1.plateau1.update_plateau(engine1.plateau1.grille) #affichage du plateau et des joueur
     #engine1.trouver_pion_a_retourner(plateau=engine1.plateau1.grille,input_joueur=(1,1),joueur_actif=engine1.joueur1) #test
     #engine1.lister_coup_possible(plateau=engine1.plateau1.grille,joueur_actif=engine1.joueur1) #test
     
@@ -25,22 +25,27 @@ if __name__ == '__main__':
 
         coup_possible = engine1.lister_coup_possible(plateau=engine1.plateau1.grille, joueur_actif=joueur)
         if coup_possible != [] : 
-
-            joueur.input_joueur() #joueur 1 a un input
-            engine1.verif_coup_joueur(input_joueur=joueur.input_joueur_MAJU, list_coup_possible= coup_possible) #vérification coup joueur
-            engine1.placer_pion(plateau = engine1.plateau1, input_joueur= joueur.input_joueur_MAJU, joueur_actif=joueur)
+            verif_ok=False
+            while verif_ok!=True:
+                joueur.input_joueur() #joueur 1 a un nput
+                verif_ok=engine1.verif_coup_joueur(input_joueur=joueur.input_joueur_MAJU, list_coup_possible= coup_possible) #vérification coup joueur
+                
+            
 
             pion_a_retourner = engine1.trouver_pion_a_retourner(plateau=engine1.plateau1.grille, input_joueur=joueur.input_joueur_MAJU, joueur_actif=joueur) #Trouve les pions à retourner 
-
+            engine1.placer_pion(plateau = engine1.plateau1.grille, input_joueur= joueur.input_joueur_MAJU, joueur_actif=joueur)
+            
             engine1.retourner_pion(plateau=engine1.plateau1.grille, list_de_pion_a_retourner= pion_a_retourner, joueur_actif=joueur) #Retourne les pions 
 
-            engine1.plateau1.update_plateau() #affiche le plateau
+            engine1.plateau1.update_plateau(engine1.plateau1.grille) #affiche le plateau
 
         else : 
             print("Pas de coup possible, joueur suivant joue")
+            
 
         engine1.switch_joueur(joueur1=engine1.joueur1, joueur2=engine1.joueur2)
 
+    engine1.plateau1.gagnant(grille= engine1.plateau1.grille)
     
 
         
