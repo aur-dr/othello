@@ -37,4 +37,20 @@ class Plateau : #création du plateau
 
     update_plateau(grille)
         
-
+    def gagnant(self,grille):
+        scour_joueur_1 = 0
+        scour_joueur_2 = 0
+        for X in range(0,8):
+            for Y in range(0, 8):
+                if grille[X][Y] == 1:
+                    scour_joueur_1 +=1
+                elif grille [X][Y] == 2:
+                    scour_joueur_2 += 1
+        if scour_joueur_1 > scour_joueur_2:
+            print("le joueur 1 a gagné")
+        elif scour_joueur_1 < scour_joueur_2:
+            print("le joueur 2 a gagné")
+        else:
+            print("egalité")
+        
+        print("noir :" ,scour_joueur_1 ,"blanc :"  ,scour_joueur_2)

@@ -30,3 +30,5 @@ class Joueur:
                 else:
                     print("mauvaise entrer, tu n'as le droit qu'a 2 caracteres, recommence: ")
         return input_joueur_MAJU
+    
+    

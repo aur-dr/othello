@@ -83,6 +83,8 @@ class Engine :
         else:
             joueur1.actif=True
             joueur2.actif=False
+    
+    
 
 if __name__ == '__main__':
     engine1= Engine()
