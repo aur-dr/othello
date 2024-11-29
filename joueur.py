@@ -1,16 +1,6 @@
 class Joueur:
 
-<<<<<<< HEAD
     def __init__(self, num_joueur: int, actif: bool, couleur: int):
-=======
-    def __init__(self, num_joueur: int, joueur_actif: bool, couleur: int):
-
-        self.nom_joueur = nom_joueur
-
-        self.a_joue_au_dernier_tour = a_joue_au_dernier_tour
-
-        self.joueur_actif = joueur_actif
->>>>>>> fe4e0bc (pull)
 
         self.nom_joueur = input("Quel est le nom du joueur ? ")
         self.num_joueur = num_joueur
