@@ -1,12 +1,47 @@
+emoji_choice = {
+    "1": '🎁',
+    "2": '🍪',
+    "3": '⭐',
+    "4": '🦌',
+    "5": '🎅',
+    "6": '🎄',
+}
+
+choix_joueur_1= ""
+
 class Joueur:
+    
+    def __init__(self, num_joueur: int, actif: bool):
+        
+        if num_joueur == 1: 
+            self.nom_joueur = input("Quel est le nom du premier joueur ? ") 
+        else: 
+            self.nom_joueur = input("Quel est le nom du deuxième joueur ? ") 
 
-    def __init__(self, num_joueur: int, actif: bool, couleur: int):
+        print (
+            "1 : " '🎁',
+            "2 : " '🍪',
+            "3 : " '⭐',
+            "4 : " '🦌',
+            "5 : " '🎅',
+            "6 : " '🎄')
+        
+        if num_joueur == 1: 
+            global choix_joueur_1 , emoji_choice             
+            self.couleur =emoji_choice[input("Joueur 1 : choisi ton pion ? ")]
+            choix_joueur_1 = self.couleur
+        else : 
+            self.couleur = emoji_choice[input("Joueur 2 : choisi ton pion ? ")]
+            while self.couleur == choix_joueur_1 : 
+                self.couleur = emoji_choice[input("Joueur 2 : choisi ton pion ? ")]
+                if self.couleur == choix_joueur_1 :
+                    print("Choisi un autre pion")
+                             
 
-        self.nom_joueur = input("Quel est le nom du joueur ? ")
+    
         self.num_joueur = num_joueur
         self.a_joue_au_dernier_tour = True
         self.actif = actif
-        self.couleur = couleur
         self.input_joueur_MAJU = ""
 
     def input_joueur (self) :
@@ -27,9 +62,9 @@ class Joueur:
                     if self.input_joueur_MAJU in liste_position:
                         input_ok=True
                     else:
-                        print('Tu es en dehors de la grille, recommence : ')
+                        print('Tu es en dehors de la grille, recommence ')
                 else:
-                    print("Mauvaise entrée, tu n'as le droit qu'à 2 caractères, recommence : ")
+                    print("Mauvaise entrée, tu dois écrire 2 caractères, recommence ")
         
         #return input_joueur_MAJU
 

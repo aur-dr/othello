@@ -19,8 +19,10 @@ class Plateau : #création du plateau
         self.grille = grille
 
 
-    def update_plateau(self, grille):
-        col_width = max(len(str(word)) for row in grille for word in row) + 2  # Calcul de la largeur des colonnes
+    def update_plateau(self, grille, couleur1,couleur2):
+        
+        emoji_padding = 2
+        col_width = max(2, max(len(str(word)) for row in grille for word in row) + emoji_padding)  # Calcul de la largeur des colonnes
         separator = '+' + '+'.join('-' * col_width for _ in range(len(grille[0]) + 1)) + '+'
 
         # Ajouter la ligne d'en-tête
@@ -30,14 +32,15 @@ class Plateau : #création du plateau
         print(separator)
 
         # Créer un dictionnaire de mappage
-        mapping = {1: 'X', 2: 'O', 0: ' '}  # Remplacez 1 par 'X', 2 par 'O', et 0 par ' ' (espace)
+        mapping = {1: couleur1 , 2: couleur2, 0: ' '}  # Remplacez 1 par 'X', 2 par 'O', et 0 par ' ' (espace) ou emoji
 
         # Imprimer les lignes avec séparateurs
         for i, row in enumerate(grille, start=1):
             # Remplacer les valeurs dans la rangée
             row = [mapping.get(word, word) for word in row]
             row = [i] + row  # Ajouter les numéros de ligne
-            print('|' + '|'.join(str(word).ljust(col_width) for word in row) + '|')
+            
+            print('|' + '|'.join(str("X").ljust(col_width) for word in row) + '|')
             print(separator)  # Imprimer le séparateur après chaque ligne
         
     #update_plateau(grille)

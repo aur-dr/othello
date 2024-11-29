@@ -7,8 +7,8 @@ from joueur import Joueur
 class Engine : 
     def __init__(self) :
         self.plateau1 = Plateau()
-        self.joueur1= Joueur(1, True, "X")
-        self.joueur2= Joueur(2, False, "O")
+        self.joueur1= Joueur(num_joueur=1, actif=True)
+        self.joueur2= Joueur(num_joueur=2, actif=False)
 
             
 
