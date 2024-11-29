@@ -30,7 +30,7 @@ class Engine :
                 if plateau[ligne][col] == 0:
                     return []
                 elif plateau[ligne][col] == adversaire:
-                    positions_adversaire.append((ligne, col))
+                    positions_adversaire.append((col, ligne))
                 elif plateau[ligne][col] == couleur_a_chercher:
                     if positions_adversaire:
                         return positions_adversaire
@@ -43,7 +43,7 @@ class Engine :
         directions = [(-1, 0), (1, 0), (0, -1), (0, 1),  # haut, bas, gauche, droite
                       (-1, -1), (-1, 1), (1, -1), (1, 1)]  # diagonales
 
-        col,ligne  = input_joueur
+        col,ligne  = input_joueur 
         if plateau[ligne][col] == 0:  # Position vide pour le nouveau pion
             for direction in directions:
                 pions_a_retourner = parcours_direction(ligne, col, direction)
@@ -58,7 +58,6 @@ class Engine :
                 pion_test=(x,y)
                 if self.trouver_pion_a_retourner(plateau=plateau,input_joueur=pion_test,joueur_actif=joueur_actif) :
                     list_coup_possible.append(pion_test)
-        print("Coup possible: ",list_coup_possible)
         return list_coup_possible
     
     def verif_coup_joueur (self,input_joueur:tuple,list_coup_possible:list):

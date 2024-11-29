@@ -29,11 +29,12 @@ if __name__ == '__main__':
             while verif_ok!=True:
                 joueur.input_joueur() #joueur 1 a un nput
                 verif_ok=engine1.verif_coup_joueur(input_joueur=joueur.input_joueur_MAJU, list_coup_possible= coup_possible) #vérification coup joueur
-                print("verif de l'input: ",joueur.input_joueur_MAJU)
-            engine1.placer_pion(plateau = engine1.plateau1.grille, input_joueur= joueur.input_joueur_MAJU, joueur_actif=joueur)
+                
+            
 
             pion_a_retourner = engine1.trouver_pion_a_retourner(plateau=engine1.plateau1.grille, input_joueur=joueur.input_joueur_MAJU, joueur_actif=joueur) #Trouve les pions à retourner 
-            print("pion a retourner: ",pion_a_retourner)
+            engine1.placer_pion(plateau = engine1.plateau1.grille, input_joueur= joueur.input_joueur_MAJU, joueur_actif=joueur)
+            
             engine1.retourner_pion(plateau=engine1.plateau1.grille, list_de_pion_a_retourner= pion_a_retourner, joueur_actif=joueur) #Retourne les pions 
 
             engine1.plateau1.update_plateau() #affiche le plateau
