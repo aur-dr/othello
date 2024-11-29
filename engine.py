@@ -11,7 +11,7 @@ class Engine :
         self.joueur2= Joueur(2, False, 2)
 
             
-    
+
     def trouver_pion_a_retourner(self, plateau: list, input_joueur: tuple, joueur_actif:Joueur): #Règle 
         # Output: list_de_pion_a_retourner 
         couleur_a_chercher = joueur_actif.couleur
@@ -22,7 +22,7 @@ class Engine :
             return 0 <= col < len(plateau) and 0 <= ligne < len(plateau[0])
 
         def parcours_direction(ligne, col, direction):
-            dx, dy = direction
+            dy, dx = direction
             positions_adversaire = []
             ligne += dx
             col += dy
@@ -43,12 +43,11 @@ class Engine :
         directions = [(-1, 0), (1, 0), (0, -1), (0, 1),  # haut, bas, gauche, droite
                       (-1, -1), (-1, 1), (1, -1), (1, 1)]  # diagonales
 
-        ligne, col = input_joueur
+        col,ligne  = input_joueur
         if plateau[ligne][col] == 0:  # Position vide pour le nouveau pion
             for direction in directions:
                 pions_a_retourner = parcours_direction(ligne, col, direction)
                 list_de_pion_a_retourner.extend(pions_a_retourner)
-
         return list_de_pion_a_retourner
 
 
@@ -59,17 +58,21 @@ class Engine :
                 pion_test=(x,y)
                 if self.trouver_pion_a_retourner(plateau=plateau,input_joueur=pion_test,joueur_actif=joueur_actif) :
                     list_coup_possible.append(pion_test)
-        print(list_coup_possible)
+        print("Coup possible: ",list_coup_possible)
         return list_coup_possible
     
     def verif_coup_joueur (self,input_joueur:tuple,list_coup_possible:list):
         if input_joueur in list_coup_possible:
             return True
         else:
+            print("Coup impossible, rejoue")
             return False
+        
     
     def placer_pion (self, plateau: list, input_joueur: tuple, joueur_actif:Joueur) : 
-        plateau[input_joueur[0]][input_joueur[1]]=joueur_actif.couleur
+        input_index0=input_joueur[0]
+        input_index1=input_joueur[1]
+        plateau[input_index1][input_index0]=joueur_actif.couleur
 
 
     def retourner_pion(self, plateau: list, list_de_pion_a_retourner: list, joueur_actif:Joueur) :
