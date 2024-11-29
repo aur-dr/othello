@@ -7,14 +7,14 @@ from joueur import Joueur
 class Engine : 
     def __init__(self) :
         self.plateau1 = Plateau()
-        self.joueur1= Joueur(1, True, 1)
-        self.joueur2= Joueur(2, False, 2)
+        self.joueur1= Joueur(1, True, "X")
+        self.joueur2= Joueur(2, False, "O")
 
             
 
     def trouver_pion_a_retourner(self, plateau: list, input_joueur: tuple, joueur_actif:Joueur): #Règle 
         # Output: list_de_pion_a_retourner 
-        couleur_a_chercher = joueur_actif.couleur
+        couleur_a_chercher = joueur_actif.num_joueur
         adversaire = 1 if couleur_a_chercher == 2 else 2
         list_de_pion_a_retourner = []
 
@@ -71,7 +71,7 @@ class Engine :
     def placer_pion (self, plateau: list, input_joueur: tuple, joueur_actif:Joueur) : 
         input_index0=input_joueur[0]
         input_index1=input_joueur[1]
-        plateau[input_index1][input_index0]=joueur_actif.couleur
+        plateau[input_index1][input_index0]=joueur_actif.num_joueur
 
 
     def retourner_pion(self, plateau: list, list_de_pion_a_retourner: list, joueur_actif:Joueur) :

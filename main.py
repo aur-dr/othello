@@ -12,7 +12,7 @@ from engine import Engine
 
 if __name__ == '__main__':
     engine1 = Engine() #creation de l'engine
-    engine1.plateau1.update_plateau() #affichage du plateau et des joueur
+    engine1.plateau1.update_plateau(engine1.plateau1.grille) #affichage du plateau et des joueur
     #engine1.trouver_pion_a_retourner(plateau=engine1.plateau1.grille,input_joueur=(1,1),joueur_actif=engine1.joueur1) #test
     #engine1.lister_coup_possible(plateau=engine1.plateau1.grille,joueur_actif=engine1.joueur1) #test
     
@@ -37,7 +37,7 @@ if __name__ == '__main__':
             
             engine1.retourner_pion(plateau=engine1.plateau1.grille, list_de_pion_a_retourner= pion_a_retourner, joueur_actif=joueur) #Retourne les pions 
 
-            engine1.plateau1.update_plateau() #affiche le plateau
+            engine1.plateau1.update_plateau(engine1.plateau1.grille) #affiche le plateau
 
         else : 
             print("Pas de coup possible, joueur suivant joue")
