@@ -7,6 +7,15 @@ l6 = [0, 0, 0, 0, 0, 0, 0, 0]
 l7 = [0, 0, 0, 0, 0, 0, 0, 0]
 l8 = [0, 0, 0, 0, 0, 0, 0, 0]
 
+emoji_choice = {
+    "1": '🎁',
+    "2": '🍪',
+    "3": '⭐',
+    "4": '🦌',
+    "5": '🎅',
+    "6": '🎄',
+}
+
 # Création de la grille
 grille = [l1, l2, l3, l4, l5, l6, l7, l8]
 
@@ -18,27 +27,38 @@ class Plateau : #création du plateau
 
         self.grille = grille
 
+    def update_plateau(self, grille, couleur1, couleur2):
+        emoji_width = 3  # Emojis visually take up more space
+        col_width = max(emoji_width, max(len(str(word)) for row in grille for word in row)) + 2
 
-    def update_plateau(self, grille):
-        col_width = max(len(str(word)) for row in grille for word in row) + 2  # Calcul de la largeur des colonnes
         separator = '+' + '+'.join('-' * col_width for _ in range(len(grille[0]) + 1)) + '+'
 
-        # Ajouter la ligne d'en-tête
+        # Add the header row
         header = [' '] + [chr(ord('A') + i) for i in range(len(grille[0]))]
         print(separator)
-        print('|' + '|'.join(str(word).ljust(col_width) for word in header) + '|')
+        print('|' + '|'.join(self.adjust_padding(str(word), col_width, emoji_width) for word in header) + '|')
         print(separator)
 
-        # Créer un dictionnaire de mappage
-        mapping = {1: 'X', 2: 'O', 0: ' '}  # Remplacez 1 par 'X', 2 par 'O', et 0 par ' ' (espace)
+        # Create a mapping dictionary
+        mapping = {1: couleur1, 2: couleur2, 0: ' '}  # Map 1 to couleur1, 2 to couleur2, and 0 to ' ' (space)
 
-        # Imprimer les lignes avec séparateurs
+        # Print rows with separators
         for i, row in enumerate(grille, start=1):
-            # Remplacer les valeurs dans la rangée
+            # Replace values in the row
             row = [mapping.get(word, word) for word in row]
-            row = [i] + row  # Ajouter les numéros de ligne
-            print('|' + '|'.join(str(word).ljust(col_width) for word in row) + '|')
-            print(separator)  # Imprimer le séparateur après chaque ligne
+            row = [i] + row  # Add line numbers
+            # Adjust padding for emojis
+            print('|' + '|'.join(self.adjust_padding(str(word), col_width, emoji_width) for word in row) + '|')
+            print(separator)  # Print separator after each line
+
+    def adjust_padding(self, word, col_width, emoji_width):
+        if any(e in word for e in emoji_choice.values()):
+            # If the word is an emoji, reduce padding to compensate for visual space
+            return word.center(col_width - emoji_width // 2)
+        else:
+            # Regular centering for normal words
+            return word.center(col_width)
+
         
     #update_plateau(grille)
         
